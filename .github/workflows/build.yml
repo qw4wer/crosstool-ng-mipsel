@@ -36,7 +36,7 @@ jobs:
           git clone https://github.com/crosstool-ng/crosstool-ng.git
       - name: run make
         run : |
-          cd ~/crosstool-ng
+          cd ~/crosstool-ng 
           ./configure --prefix=~/ct-ng
           make
           make install
