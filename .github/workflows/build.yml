@@ -24,18 +24,18 @@ jobs:
 
       - name: apt-get init
         run: |
-             apt-get update
-             apt-get install automake bison chrpath flex g++ git gperf \gawk libexpat1-dev libncurses5-dev libsdl1.2-dev libtool \python2.7-dev texinfo unzip help2man make libtool-bin.  
+             sudo apt-get update
+             sudo apt-get install automake bison chrpath flex g++ git gperf \gawk libexpat1-dev libncurses5-dev libsdl1.2-dev libtool \python2.7-dev texinfo unzip help2man make libtool-bin.  
 
       # Runs a set of commands using the runners shell
       - name: Run git clone
         run: |
-          cd /root
+          cd ~
           git clone https://github.com/crosstool-ng/crosstool-ng.git
       - name: run make
         run : |
-          cd /root/crosstool-ng,
-          ./configure --prefix=/root/ct-ng
+          cd ~/crosstool-ng,
+          ./configure --prefix=~/ct-ng
           make
           make install
           
