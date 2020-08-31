@@ -37,10 +37,11 @@ jobs:
       - name: run make
         run : |
           cd ~/crosstool-ng
-          ./bootstrap
-          ./configure --prefix=${pwd}/ct-ng
-          make
-          make install
+          pwd
+          # ./bootstrap
+          # ./configure --prefix=${pwd}/ct-ng
+          # make
+          # make install
           
           
               
