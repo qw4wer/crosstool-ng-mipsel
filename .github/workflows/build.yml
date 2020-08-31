@@ -37,6 +37,7 @@ jobs:
       - name: run make
         run : |
           cd ~/crosstool-ng 
+          ls ./
           ./configure --prefix=~/ct-ng
           make
           make install
