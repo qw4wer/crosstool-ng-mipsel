@@ -32,6 +32,7 @@ jobs:
       - name: Run git clone
         run: |
           cd ~
+          pwd
           git clone https://github.com/crosstool-ng/crosstool-ng.git
       - name: run make
         run : |
