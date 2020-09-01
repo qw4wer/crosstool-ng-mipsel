@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: crosstool
-          path: ct-ng.tar
+          path: ./crosstool-ng/ct-ng.tar
           
           
               
