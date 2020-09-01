@@ -43,9 +43,9 @@ jobs:
           tar -cf ct-ng.tar .ct-ng/
       - name: "upload ct-ng"
         uses: actions/upload-artifact@v2
-          with:
-            name: crosstool
-            path: ct-ng.tar
+        with:
+          name: crosstool
+          path: ct-ng.tar
           
           
               
