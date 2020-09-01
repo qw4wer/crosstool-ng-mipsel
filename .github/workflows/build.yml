@@ -20,27 +20,32 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout
+      - name: "Checkout"
         uses: actions/checkout@v2
 
-      - name: apt-get init
+      - name: "apt-get init"
         run: |
-             sudo  apt-get update
-             sudo  apt-get install automake bison chrpath flex g++ git gperf \gawk libexpat1-dev libncurses5-dev libsdl1.2-dev libtool \python2.7-dev texinfo unzip help2man make libtool-bin  
+            ls
+            sudo apt-get install -y gperf help2man libtool-bin
 
       # Runs a set of commands using the runners shell
-      - name: Run git clone
+      - name: "Run git clone"
         run: |
           cd ~
-          pwd
           git clone https://github.com/crosstool-ng/crosstool-ng.git
-      - name: run make
+      - name: "run make"
         run : |
           cd ~/crosstool-ng
           ./bootstrap
-          ./configure --prefix=/home/runner/ct-ng
+          ./configure --prefix=$pwd/ct-ng
           make
           make install
+          tar -cf ct-ng.tar .ct-ng/
+      - name: "upload ct-ng"
+        uses: actions/upload-artifact@v2
+          with:
+            name: crosstool
+            path: ct-ng.tar
           
           
               
