@@ -60,8 +60,8 @@ jobs:
       - name: "prereq"
         run: |
           sudo apt-get install -y gperf help2man libtool-bin
-          echo "::add-path::$GITHUB_WORKSPACE/.build/bin"
-          ls $GITHUB_WORKSPACE/.local/bin
+          PATH=$GITHUB_WORKSPACE/.build/bin:$PATH
+          
           
 
 
