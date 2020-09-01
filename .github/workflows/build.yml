@@ -31,7 +31,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: "Run git clone"
         run: |
-          cd ~
           git clone https://github.com/crosstool-ng/crosstool-ng.git
       - name: "run make"
         run : |
