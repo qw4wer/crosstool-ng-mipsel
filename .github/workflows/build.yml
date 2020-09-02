@@ -60,9 +60,9 @@ jobs:
           tar -xf ct-ng.tar
       - name: "prereq"
         run: |
-          sudo apt-get install -y gperf help2man libtool-bin
+          #sudo apt-get install -y gperf help2man libtool-bin
           
-          $GITHUB_WORKSPACE/.build/bin/ct-ng help
+          .build/bin/ct-ng help
           
           
 
