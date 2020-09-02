@@ -36,15 +36,15 @@ jobs:
         run : |
           cd ./crosstool-ng
           ./bootstrap
-          ./configure --prefix=$PWD/.build/
+          ./configure --prefix=$GITHUB_WORKSPACE/.build/
           make
           make install
-          tar -cf ct-ng.tar .build/
+          tar -cf ct-ng.tar $GITHUB_WORKSPACE/.build/
       - name: "upload ct-ng"
         uses: actions/upload-artifact@v2
         with:
           name: crosstool
-          path: ./crosstool-ng/ct-ng.tar
+          path: $GITHUB_WORKSPACE/ct-ng.tar
   
   toolchains:
     needs: crosstool
@@ -61,7 +61,7 @@ jobs:
         run: |
           sudo apt-get install -y gperf help2man libtool-bin
           
-          $GITHUB_WORKSPACE/crosstool-ng/.build/bin/ct-ng help
+          $GITHUB_WORKSPACE/.build/bin/ct-ng help
           
           
 
