@@ -61,7 +61,7 @@ jobs:
       - name: "prereq"
         run: |
           #sudo apt-get install -y gperf help2man libtool-bin
-          ls 
+          ls -a
           #.build/bin/ct-ng help
           
           
