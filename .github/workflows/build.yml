@@ -39,12 +39,12 @@ jobs:
           ./configure --prefix=$GITHUB_WORKSPACE/.build/
           make
           make install
-          tar -cf ct-ng.tar $GITHUB_WORKSPACE/.build/
+          tar -cf $GITHUB_WORKSPACE/ct-ng.tar $GITHUB_WORKSPACE/.build/
       - name: "upload ct-ng"
         uses: actions/upload-artifact@v2
         with:
           name: crosstool
-          path: ./ct-ng.tar
+          path: $GITHUB_WORKSPACE/ct-ng.tar
   
   toolchains:
     needs: crosstool
