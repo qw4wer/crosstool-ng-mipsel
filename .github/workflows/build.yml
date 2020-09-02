@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: crosstool
-          path: $GITHUB_WORKSPACE/crosstool-ng/ct-ng.tar
+          path: $GITHUB_WORKSPACE/ct-ng.tar
   
   toolchains:
     needs: crosstool
