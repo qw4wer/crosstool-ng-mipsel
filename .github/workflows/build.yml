@@ -61,7 +61,7 @@ jobs:
         run: |
           sudo apt-get install -y gperf help2man libtool-bin
           
-          $GITHUB_WORKSPACE/.build/bin/ct-ng help
+          $GITHUB_WORKSPACE/crosstool-ng/.build/bin/ct-ng help
           
           
 
