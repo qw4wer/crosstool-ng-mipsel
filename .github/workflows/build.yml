@@ -57,7 +57,7 @@ jobs:
           name: crosstool
       - name: "extract ct-ng"
         run: |
-          mkdir -r $GITHUB_WORKSPACE/crosstool-ng
+          mkdir -p $GITHUB_WORKSPACE/crosstool-ng
           tar -xf ct-ng.tar -C $GITHUB_WORKSPACE/crosstool-ng
       - name: "prereq"
         run: |
