@@ -36,10 +36,10 @@ jobs:
         run : |
           cd ./crosstool-ng
           ./bootstrap
-          ./configure --prefix=$pwd/.build/ --enable-local
+          ./configure --prefix=$PWD/.build/ --enable-local
           make
           make install
-          tar -cf $GITHUB_WORKSPACE/ct-ng.tar $pwd/.build/
+          tar -cf $GITHUB_WORKSPACE/ct-ng.tar $PWD/.build/
           ls $GITHUB_WORKSPACE
       - name: "upload ct-ng"
         uses: actions/upload-artifact@v2
