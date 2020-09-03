@@ -34,12 +34,12 @@ jobs:
           git clone https://github.com/crosstool-ng/crosstool-ng.git
       - name: "run make"
         run : |
-                    ./bootstrap
+          ./bootstrap
           ./configure --prefix=$PWD/.build/
           make
           make install
           .build/bin/ct-ng help
-          tar -cf ./ct-ng.tar .build/
+          tar -cf $GITHUB_WORKSPACE/ct-ng.tar .build/
       - name: "upload ct-ng"
         uses: actions/upload-artifact@v2
         with:
