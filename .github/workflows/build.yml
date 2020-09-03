@@ -39,9 +39,8 @@ jobs:
           ./configure --prefix=$PWD/.build/
           make
           make install
+          .build/bin/ct-ng help
           tar -cf $GITHUB_WORKSPACE/ct-ng.tar .build/
-          ls $GITHUB_WORKSPACE
-          pwd
       - name: "upload ct-ng"
         uses: actions/upload-artifact@v2
         with:
@@ -62,9 +61,10 @@ jobs:
 
       - name: "prereq"
         run: |
-          #sudo apt-get install -y gperf help2man libtool-bin
+          sudo apt-get install -y gperf help2man libtool-bin
+          echo "::add-path::$GITHUB_WORKSPACE/.build/bin"
           ls -al
-          .build/bin/ct-ng help
+          ct-ng help
           
           
 
