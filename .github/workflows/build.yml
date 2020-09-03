@@ -60,6 +60,7 @@ jobs:
           pwd
           ls -la
           tar -xf ct-ng.tar -C ./
+          ls -la ./home
       - name: "prereq"
         run: |
           #sudo apt-get install -y gperf help2man libtool-bin
