@@ -34,6 +34,7 @@ jobs:
           git clone https://github.com/crosstool-ng/crosstool-ng.git
       - name: "run make"
         run : |
+          cd ./crosstool-ng
           ./bootstrap
           ./configure --prefix=$PWD/.build/
           make
@@ -56,11 +57,12 @@ jobs:
           name: crosstool
       - name: "extract ct-ng"
         run: |
-          tar -xf ct-ng.tar
+          mkdir -r $GITHUB_WORKSPACE/crosstool-ng
+          tar -xf ct-ng.tar -C $GITHUB_WORKSPACE/crosstool-ng
       - name: "prereq"
         run: |
           sudo apt-get install -y gperf help2man libtool-bin
-          echo "::add-path::$GITHUB_WORKSPACE/.build/bin"
+          echo "::add-path::$GITHUB_WORKSPACE/crosstool-ng/.build/bin"
       - name: "build"
         run: |
             ct-ng help
