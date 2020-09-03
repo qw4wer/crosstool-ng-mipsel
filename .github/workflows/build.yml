@@ -58,9 +58,9 @@ jobs:
       - name: "extract ct-ng"
         run: |
           pwd
-          ls -la
-          tar -xf ct-ng.tar -C ./
-          ls -la ./home
+
+          tar -xf ct-ng.tar -C $GITHUB_WORKSPACE/.build/
+
       - name: "prereq"
         run: |
           #sudo apt-get install -y gperf help2man libtool-bin
