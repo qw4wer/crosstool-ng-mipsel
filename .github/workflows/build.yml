@@ -39,13 +39,13 @@ jobs:
           ./configure --prefix=$PWD/.build/ --enable-local
           make
           make install
-          tar -cf $GITHUB_WORKSPACE/ct-ng.tar $PWD/.build/
+          tar -cf $GITHUB_WORKSPACE/ct-ng.tar .build/
           ls $GITHUB_WORKSPACE
       - name: "upload ct-ng"
         uses: actions/upload-artifact@v2
         with:
           name: crosstool
-          path: ./ct-ng.tar
+          path: ./crosstool-ng/ct-ng.tar
   
   toolchains:
     needs: crosstool
@@ -57,7 +57,7 @@ jobs:
           name: crosstool
       - name: "extract ct-ng"
         run: |
-          tar -xf ct-ng.tar --strip-components 5
+          tar -xf ct-ng.tar
 
       - name: "prereq"
         run: |
