@@ -57,7 +57,9 @@ jobs:
           name: crosstool
       - name: "extract ct-ng"
         run: |
-          tar -xf ct-ng.tar
+          pwd
+          ls -la
+          tar -xf ct-ng.tar -C ./
       - name: "prereq"
         run: |
           #sudo apt-get install -y gperf help2man libtool-bin
