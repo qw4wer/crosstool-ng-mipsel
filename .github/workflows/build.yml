@@ -36,7 +36,7 @@ jobs:
         run : |
           cd ./crosstool-ng
           ./bootstrap
-          ./configure --prefix=$PWD/.build/ --enable-local
+          ./configure --prefix=$PWD/.build/
           make
           make install
           tar -cf $GITHUB_WORKSPACE/ct-ng.tar .build/
@@ -46,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: crosstool
-          path: $GITHUB_WORKSPACE/ct-ng.tar
+          path: ct-ng.tar
   
   toolchains:
     needs: crosstool
