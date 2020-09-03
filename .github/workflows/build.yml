@@ -36,7 +36,7 @@ jobs:
         run : |
           cd ./crosstool-ng
           ./bootstrap
-          ./configure --prefix=.build/ --enable-local
+          ./configure --prefix=./.build/ --enable-local
           make
           make install
           tar -cf $GITHUB_WORKSPACE/ct-ng.tar .build/
