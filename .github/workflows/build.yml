@@ -59,13 +59,15 @@ jobs:
         run: |
           mkdir -p $GITHUB_WORKSPACE/crosstool-ng
           tar -xf ct-ng.tar -C $GITHUB_WORKSPACE/crosstool-ng
+      - name: "Checkout"
+        uses: actions/checkout@v2          
       - name: "prereq"
         run: |
           sudo apt-get install -y gperf help2man libtool-bin
           echo "::add-path::$GITHUB_WORKSPACE/crosstool-ng/.build/bin"
       - name: "build"
         run: |
-            ct-ng help
+            ct-ng build
           
           
 
