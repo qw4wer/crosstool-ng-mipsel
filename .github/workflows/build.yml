@@ -68,6 +68,7 @@ jobs:
           echo "::add-path::$GITHUB_WORKSPACE/crosstool-ng/.build/bin"
       - name: "build"
         run: |
+            mv mipsel.config .config
             ct-ng build
           
           
