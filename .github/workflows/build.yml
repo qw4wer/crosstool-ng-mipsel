@@ -70,7 +70,13 @@ jobs:
         run: |
             mv mipsel.config .config
             ct-ng build
-          
+            ls -al
+            tar -cf $GITHUB_WORKSPACE/x-tools.tar x-tools/
+      - name: "upload x-tools"
+        uses: actions/upload-artifact@v2
+        with:
+          name: x-tools
+          path: x-tools.tar    
           
 
 
