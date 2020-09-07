@@ -23,9 +23,9 @@ jobs:
                   cd ./test
                   dd if=/dev/zero of=test bs=1M count=100
                   cd ../
-                  gzip -d test.gz ./test
+                  tar -zcvf test.tar.gz ./test
             - name: "upload"
               uses: actions/upload-artifact@v2
               with:
                 name: crosstool
-                path: test.gz
+                path: test.tar.gz
