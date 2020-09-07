@@ -38,12 +38,12 @@ jobs:
           make
           make install
           .build/bin/ct-ng help
-          tar -cf $GITHUB_WORKSPACE/ct-ng.tar .build/
+          tar -zcvf $GITHUB_WORKSPACE/ct-ng.tar.gz .build/
       - name: "upload ct-ng"
         uses: actions/upload-artifact@v2
         with:
           name: crosstool
-          path: ct-ng.tar
+          path: ct-ng.tar.gz
   
   toolchains:
     needs: crosstool
@@ -58,7 +58,7 @@ jobs:
       - name: "extract ct-ng"
         run: |
           mkdir -p $GITHUB_WORKSPACE/crosstool-ng
-          tar -xf ct-ng.tar -C $GITHUB_WORKSPACE/crosstool-ng
+          tar -zxvf ct-ng.tar.gz -C $GITHUB_WORKSPACE/crosstool-ng
 
       - name: "prereq"
         run: |
@@ -70,12 +70,12 @@ jobs:
             ct-ng build
             ls -al
             echo  $GITHUB_WORKSPACE
-            tar -cf $GITHUB_WORKSPACE/x-tools.tar /home/runner/x-tools/
+            tar -zcvf $GITHUB_WORKSPACE/x-tools.tar.gz /home/runner/x-tools/
       - name: "upload x-tools"
         uses: actions/upload-artifact@v2
         with:
           name: x-tools
-          path: x-tools.tar    
+          path: x-tools.tar.gz
           
 
 
