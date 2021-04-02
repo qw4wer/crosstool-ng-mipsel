@@ -9,8 +9,7 @@ on:
         par2:
           description: '参数2'
           required: false
-  watch:
-    types: started          
+      
 jobs:
     test1:
         runs-on:
