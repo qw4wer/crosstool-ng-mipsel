@@ -2,13 +2,10 @@ name: test
 on:
     workflow_dispatch:
       inputs:
-        par1:
+        config:
           description: '参数1'
           required: true
-          default: ''
-        par2:
-          description: '参数2'
-          required: false
+          default: 'mipsel.config'
       
 jobs:
     test1:
@@ -22,8 +19,9 @@ jobs:
                   pwd
                   mkdir -p ./test
                   cd ./test
-                  dd if=/dev/zero of=test bs=1M count=100
+                  dd if=/dev/zero of=test bs=1M count=10
                   cd ../
+                  echo {{inputs.config}}
                   tar -zcvf test.tar.gz ./test
             - name: "upload"
               uses: actions/upload-artifact@v2
