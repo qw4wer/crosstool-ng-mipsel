@@ -21,7 +21,7 @@ jobs:
                   cd ./test
                   dd if=/dev/zero of=test bs=1M count=10
                   cd ../
-                  echo ${{inputs.config}}
+                  echo ${inputs.config}
                   tar -zcvf test.tar.gz ./test
             - name: "upload"
               uses: actions/upload-artifact@v2
