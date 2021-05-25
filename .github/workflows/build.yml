@@ -83,14 +83,13 @@ jobs:
         with:
           name: x-tools
           path: x-tools.tar.gz
-      - name: "created releases"
-        uses: "marvinpinto/action-automatic-releases@latest"
+      - uses: "marvinpinto/action-automatic-releases@latest"
               with:
                 repo_token: "${{ secrets.GITHUB_TOKEN }}"
                 automatic_release_tag: "${{github.event.inputs.config}}"
                 prerelease: false
                 files: |
-                  test.tar.gz       
+                  x-tools.tar.gz
           
 
 
