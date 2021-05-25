@@ -81,15 +81,10 @@ jobs:
       - uses: "marvinpinto/action-automatic-releases@latest"
               with:
                 repo_token: "${{ secrets.GITHUB_TOKEN }}"
-                automatic_release_tag: "${{github.event.inputs.config}}"
+                automatic_release_tag: "${{ github.event.inputs.config }}"
                 prerelease: false
                 files: |
                   x-tools.tar.gz            
-      - name: "upload x-tools"
-        uses: actions/upload-artifact@v2
-        with:
-          name: x-tools
-          path: x-tools.tar.gz
 
           
 
