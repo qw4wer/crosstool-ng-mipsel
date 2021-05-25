@@ -23,11 +23,6 @@ jobs:
                   cd ../
                   echo "${{github.event.inputs.config}}"
                   tar -zcvf test.tar.gz ./test
-            - name: "upload"
-              uses: actions/upload-artifact@v2
-              with:
-                name: crosstool
-                path: test.tar.gz
             - uses: "marvinpinto/action-automatic-releases@latest"
               with:
                 repo_token: "${{ secrets.GITHUB_TOKEN }}"
