@@ -72,7 +72,6 @@ jobs:
         run: |
             mv mipsel.config .config
             ct-ng build
-            ls -al
             echo  $GITHUB_WORKSPACE
             tar -zcvf $GITHUB_WORKSPACE/x-tools.tar.gz /home/runner/x-tools/
       - name: "upload x-tools"
