@@ -79,15 +79,9 @@ jobs:
             echo  $GITHUB_WORKSPACE
             tar -zcvf $GITHUB_WORKSPACE/x-tools.tar.gz /home/runner/x-tools/
       - uses: "marvinpinto/action-automatic-releases@latest"
-              with:
-                repo_token: "${{ secrets.GITHUB_TOKEN }}"
-                automatic_release_tag: "${{ github.event.inputs.config }}"
-                prerelease: false
-                files: |
-                  x-tools.tar.gz            
-
-          
-
-
-          
-              
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "${{ github.event.inputs.config }}"
+          prerelease: false
+          files: |
+            x-tools.tar.gz
