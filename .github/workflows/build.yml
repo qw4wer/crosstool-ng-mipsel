@@ -6,8 +6,12 @@ name: CI
 # events but only for the master branch
 on:
   workflow_dispatch:
-  watch:
-    types: started    
+    inputs:
+        config:
+          description: '配置文件名'
+          required: true
+          default: 'mipsel.config'
+
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -45,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: crosstool
-          path: ct-ng.tar.gz
+          path: ct-ng.tar.gz    
   
   toolchains:
     needs: crosstool
@@ -70,7 +74,7 @@ jobs:
           echo "::add-path::$GITHUB_WORKSPACE/crosstool-ng/.build/bin"
       - name: "build"
         run: |
-            mv mipsel.config .config
+            mv "${{github.event.inputs.config}}" .config
             ct-ng build
             echo  $GITHUB_WORKSPACE
             tar -zcvf $GITHUB_WORKSPACE/x-tools.tar.gz /home/runner/x-tools/
@@ -79,6 +83,14 @@ jobs:
         with:
           name: x-tools
           path: x-tools.tar.gz
+      - name: "created releases"
+        uses: "marvinpinto/action-automatic-releases@latest"
+              with:
+                repo_token: "${{ secrets.GITHUB_TOKEN }}"
+                automatic_release_tag: "${{github.event.inputs.config}}"
+                prerelease: false
+                files: |
+                  test.tar.gz       
           
 
 
